@@ -1,1 +1,0 @@
-# andranik-sahakyan.github.io
