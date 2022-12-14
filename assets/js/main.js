@@ -50,9 +50,18 @@
       if (!navbarlink.hash) return
       let section = select(navbarlink.hash)
       if (!section) return
+
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         navbarlink.classList.add('active')
       } else {
+        navbarlink.classList.remove('active')
+      }
+    
+      /* Hacky fix for active state on scroll bug */
+      if (position >= 2700 && navbarlink.hash == '#projects') {
+        navbarlink.classList.add('active')
+      }
+      else if (position >= 2700 && navbarlink.hash == '#resume') {
         navbarlink.classList.remove('active')
       }
     })
