@@ -8,13 +8,6 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-.profile-pic {
-  border-radius: 50%;
-  object-fit: cover; /* This will make sure your image covers the whole area */
-  position: relative;
-  overflow: hidden;
-  border: 3px solid #0563bb;
-}
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -395,13 +388,29 @@ section {
   margin-bottom: 0;
 }
 
+.profile-pic-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Make it responsive */
+  max-width: 165px; /* Adjust the maximum size */
+  height: auto; /* Let the height adjust automatically */
+  border-radius: 50%;
+  margin: auto; /* Center the image horizontally */
+  padding-bottom: 15px;
+}
+
+/* Image styling */
+.profile-pic {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #0563bb;
+}
+
 @media only screen and (max-width: 992px) {
-  .img-fluid {
-    max-width: 30%;
-    height: auto;
-    margin: auto;
-    display: block;
-    padding-bottom: 15px;
+  .profile-pic-wrapper {
+    max-width: 150px; /* Adjust as per mobile layout */
   }
 }
 
