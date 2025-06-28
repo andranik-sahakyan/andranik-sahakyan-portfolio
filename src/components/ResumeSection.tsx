@@ -10,6 +10,7 @@ const ResumeSection = () => {
       title: "M.S. Computer Science",
       company: "Johns Hopkins University",
       period: "2020 - 2022",
+      location: "Baltimore, MD (Remote)",
       description: "Focus - Data Science & Cloud Computing",
       highlights: ["Relevant Coursework - Advanced AI, Large-Scale Database Systems, Data Science, Cloud Computing, Quantum Computation"]
     },
@@ -17,6 +18,7 @@ const ResumeSection = () => {
       title: "B.S. Computer Science", 
       company: "University of California, Irvine",
       period: "2018 - 2020",
+      location: "Irvine, CA",
       description: "Focus - Intelligent Systems",
       highlights: ["Relevant Coursework - Machine Learning & Data Mining, Probabilistic Graphical Models, Reinforcement Learning, Graph Algorithms, Information Retrieval, Edge Computing"]
     }
@@ -25,7 +27,8 @@ const ResumeSection = () => {
   const experience = [
     {
       title: "Software Engineer II, AI",
-      company: "FloQast, Los Angeles, CA",
+      company: "FloQast",
+      location: "Los Angeles, CA (Remote)",
       period: "December 2024 - Present",
       highlights: [
         "Designed and implemented an AWS SageMaker ML pipeline for anomaly detection in financial accounting data, training personalized models for each customer and identifying anomalies using LOF + iForest + LLMs.",
@@ -34,8 +37,8 @@ const ResumeSection = () => {
     },
     {
       title: "Data Engineer II",
-      company: "Abbott, Los Angeles, CA",
-      location: "Digital Health Engineering, Cardiac Rhythym Management R&D",
+      company: "Abbott",
+      location: "Sylmar, CA",
       period: "April 2023 - December 2024",
       highlights: [
         "Implemented a POC for various generative AI use cases using open source LLMs (question answering over internal documents with RAG, Text-to-SQL for querying databases in natural language, summarizing patient app logs, etc.)",
@@ -45,8 +48,8 @@ const ResumeSection = () => {
     },
     {
       title: "Data Engineer I",
-      company: "Abbott, Los Angeles, CA",
-      location: "Digital Health Engineering, Cardiac Rhythym Management R&D",
+      company: "Abbott",
+      location: "Sylmar, CA",
       period: "October 2021 - April 2023",
       highlights: [
         "Developed tools and processes to decode raw device ECG data and create datasets for training machine learning models.",
@@ -56,8 +59,8 @@ const ResumeSection = () => {
     },
     {
       title: "Software Engineer I",
-      company: "Abbott, Los Angeles, CA",
-      location: "Remote Care Operations, Cardiac Rhythym Management",
+      company: "Abbott",
+      location: "Sylmar, CA",
       period: "March 2021 - October 2021",
       highlights: [
         "Developed automated testing pipeline for mobile applications and medical devices.",
@@ -70,7 +73,8 @@ const ResumeSection = () => {
   const research = [
     {
       title: "Bioinformatics ORISE Fellow",
-      company: "US Food and Drug Administration, Silver Spring, MD",
+      company: "US Food and Drug Administration",
+      location: "Silver Spring, MD",
       period: "May 2018 - August 2018",
       highlights: [
         "Algorithmic detection of structural variations to discover potential off-target activity during genome editing.",
@@ -81,7 +85,8 @@ const ResumeSection = () => {
     },
     {
       title: "Bioinformatics Research Intern",
-      company: "US Food and Drug Administration, Silver Spring, MD",
+      company: "US Food and Drug Administration",
+      location: "Silver Spring, MD",
       period: "June 2017 - September 2017",
       highlights: [
         "Research and development of novel compression algorithms for genetic data.",
@@ -327,7 +332,7 @@ const ResumeSection = () => {
                       period={item.period}
                       description={item.description}
                       highlights={item.highlights}
-                      type="education"
+                      location={item.location}
                       isLast={index === education.length - 1}
                     />
                   ))}
@@ -348,7 +353,7 @@ const ResumeSection = () => {
                       company={item.company}
                       period={item.period}
                       highlights={item.highlights}
-                      type="research"
+                      location={item.location}
                       isLast={index === research.length - 1}
                     />
                   ))}
@@ -368,7 +373,6 @@ const ResumeSection = () => {
                       title={item.title}
                       period={item.period}
                       highlights={item.highlights}
-                      type="award"
                       isLast={index === awards.length - 1}
                     />
                   ))}

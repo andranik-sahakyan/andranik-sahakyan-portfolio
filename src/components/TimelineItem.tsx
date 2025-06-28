@@ -12,7 +12,6 @@ interface TimelineItemProps {
   description?: string;
   highlights?: string[];
   isLast?: boolean;
-  type?: 'experience' | 'education' | 'research' | 'award';
 }
 
 const TimelineItem = ({ 
