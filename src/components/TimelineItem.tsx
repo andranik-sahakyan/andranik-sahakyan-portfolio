@@ -22,8 +22,7 @@ const TimelineItem = ({
   period, 
   description, 
   highlights, 
-  isLast = false,
-  type = 'experience'
+  isLast = false
 }: TimelineItemProps) => {
 
 

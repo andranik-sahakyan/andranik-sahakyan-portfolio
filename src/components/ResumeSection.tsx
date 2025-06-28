@@ -183,14 +183,14 @@ const ResumeSection = () => {
       variants={sectionVariants}
       className="mb-6"
     >
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 px-2 sm:px-1">
         <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white mr-3">
           {icon}
         </div>
         <h4 className="text-lg font-semibold text-gray-300">{category}</h4>
       </div>
       <motion.div 
-        className="flex flex-wrap gap-2 px-6 sm:px-0"
+        className="flex flex-wrap gap-2 px-2 sm:px-1"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -268,7 +268,6 @@ const ResumeSection = () => {
                       location={item.location}
                       period={item.period}
                       highlights={item.highlights}
-                      type="experience"
                       isLast={index === experience.length - 1}
                     />
                   ))}
