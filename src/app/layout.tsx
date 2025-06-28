@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.andraniksahakyan.com'),
-  title: "Andranik Sahakyan - AI & Software Engineer",
+  title: "Andranik Sahakyan",
   description: "Experienced Software Engineer specializing in AI/ML, cloud computing, and full-stack development. Currently Software Engineer II at FloQast, previously at Abbott.",
   keywords: "AI, AI Agents, LLM, Software Engineer, Machine Learning, Data Engineer, Andranik Sahakyan, Los Angeles, Python, JavaScript, React, Next.js, AWS SageMaker, Cloud Computing",
   robots: "index, follow",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.andraniksahakyan.com',
-    title: 'Andranik Sahakyan - AI & Software Engineer',
+    title: 'Andranik Sahakyan',
     description: 'Experienced Software Engineer specializing in AI/ML, cloud computing, and full-stack development.',
     siteName: 'Andranik Sahakyan Portfolio',
     images: [
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
         url: '/assets/img/profile.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Andranik Sahakyan - AI & Software Engineer',
+        alt: 'Andranik Sahakyan',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Andranik Sahakyan - AI & Software Engineer',
+    title: 'Andranik Sahakyan',
     description: 'Experienced Software Engineer specializing in AI/ML, cloud computing, and full-stack development.',
     images: ['/assets/img/profile.jpeg'],
   },
