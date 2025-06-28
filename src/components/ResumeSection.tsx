@@ -190,7 +190,7 @@ const ResumeSection = () => {
         <h4 className="text-lg font-semibold text-gray-300">{category}</h4>
       </div>
       <motion.div 
-        className="flex flex-wrap gap-2"
+        className="flex flex-wrap gap-2 px-2 sm:px-0"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
