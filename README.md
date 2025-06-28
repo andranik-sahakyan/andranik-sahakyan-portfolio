@@ -21,26 +21,6 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - [Lucide React](https://lucide.dev/) - Beautiful icons
 - [Typed.js](https://github.com/mattboldt/typed.js/) - Typing animation
 
-## 📦 Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd portfolio-nextjs
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Run the development server:
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## 🏗️ Project Structure
 
 ```
@@ -75,14 +55,6 @@ src/
 - Mobile: Bottom navigation bar
 - Responsive grid layouts for all sections
 - Optimized images and performance
-
-## 🚀 Deployment
-
-The site can be deployed to any platform that supports Next.js:
-
-- [Vercel](https://vercel.com/) (Recommended)
-- [Netlify](https://netlify.com/)
-- [Railway](https://railway.app/)
 
 ## 📄 License
 
