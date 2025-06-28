@@ -10,26 +10,22 @@ const ProjectsSection = () => {
     {
       title: "Quantum Machine Learning Research Paper",
       image: "/assets/img/quantum-computing.jpg",
-      link: "/assets/pdf/IntroToQMLandQNN.pdf",
-      imageStyle: "top: -10%"
+      link: "/assets/pdf/IntroToQMLandQNN.pdf"
     },
     {
       title: "AT&T Mobile App Hackathon",
       image: "/assets/img/att_hackathon.jpeg",
-      link: "https://developer.att.com/blog/2017-summit-challenge-winners",
-      imageStyle: "top: 0"
+      link: "https://developer.att.com/blog/2017-summit-challenge-winners"
     },
     {
       title: "COVI",
       image: "/assets/img/COVI.png",
-      link: "https://www.kickstarter.com/projects/thecovicompany/covi-stay-home-gain-points-earn-rewards",
-      imageStyle: "top: 8%"
+      link: "https://www.kickstarter.com/projects/thecovicompany/covi-stay-home-gain-points-earn-rewards"
     },
     {
       title: "Team Tron RL",
       image: "/assets/img/TeamTronRL.png",
-      link: "/assets/pdf/TeamTronRL.pdf",
-      imageStyle: "top: -41%"
+      link: "/assets/pdf/TeamTronRL.pdf"
     }
   ];
 
@@ -99,17 +95,12 @@ const ProjectsSection = () => {
             {projects.map((project, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-slate-700 border-slate-600">
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      style={{
-                        objectPosition: project.imageStyle.includes('top:') ? 
-                          `center ${project.imageStyle.split('top: ')[1]}` : 
-                          'center'
-                      }}
+                      className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <a

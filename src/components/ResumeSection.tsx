@@ -251,131 +251,125 @@ const ResumeSection = () => {
             viewport={{ once: true }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-16"
           >
-            {/* Left Column */}
-            <div className="space-y-16">
-              {/* Professional Experience */}
-              <motion.div variants={sectionVariants}>
-                <SectionHeader 
-                  icon={<Briefcase className="w-6 h-6" />}
-                  title="Professional Experience"
-                />
-                <div className="space-y-6">
-                  {experience.map((item, index) => (
-                    <TimelineItem
-                      key={index}
-                      title={item.title}
-                      company={item.company}
-                      location={item.location}
-                      period={item.period}
-                      highlights={item.highlights}
-                      type="experience"
-                      isLast={index === experience.length - 1}
-                    />
-                  ))}
-                </div>
-              </motion.div>
+            {/* Professional Experience - Order 1 on all screens */}
+            <motion.div variants={sectionVariants} className="lg:col-span-1 order-1">
+              <SectionHeader 
+                icon={<Briefcase className="w-6 h-6" />}
+                title="Professional Experience"
+              />
+              <div className="space-y-6">
+                {experience.map((item, index) => (
+                  <TimelineItem
+                    key={index}
+                    title={item.title}
+                    company={item.company}
+                    location={item.location}
+                    period={item.period}
+                    highlights={item.highlights}
+                    type="experience"
+                    isLast={index === experience.length - 1}
+                  />
+                ))}
+              </div>
+            </motion.div>
 
-              {/* Skills & Technologies */}
-              <motion.div variants={sectionVariants}>
-                <SectionHeader 
-                  icon={<Code className="w-6 h-6" />}
-                  title="Skills & Technologies"
-                />
-                <div className="space-y-6">
-                  <SkillCategory 
-                    category="Programming Languages" 
-                    skills={skills["Programming Languages"]} 
-                    icon={<Code className="w-4 h-4" />}
+            {/* Education - Order 2 on all screens */}
+            <motion.div variants={sectionVariants} className="lg:col-span-1 order-2">
+              <SectionHeader 
+                icon={<GraduationCap className="w-6 h-6" />}
+                title="Education"
+              />
+              <div className="space-y-6">
+                {education.map((item, index) => (
+                  <TimelineItem
+                    key={index}
+                    title={item.title}
+                    company={item.company}
+                    period={item.period}
+                    description={item.description}
+                    highlights={item.highlights}
+                    type="education"
+                    isLast={index === education.length - 1}
                   />
-                  <SkillCategory 
-                    category="AI/ML Technologies" 
-                    skills={skills["AI/ML Technologies"]} 
-                    icon={<Brain className="w-4 h-4" />}
-                  />
-                  <SkillCategory 
-                    category="Cloud & Infrastructure" 
-                    skills={skills["Cloud & Infrastructure"]} 
-                    icon={<Cloud className="w-4 h-4" />}
-                  />
-                  <SkillCategory 
-                    category="Frameworks & Libraries" 
-                    skills={skills["Frameworks & Libraries"]} 
-                    icon={<Code className="w-4 h-4" />}
-                  />
-                  <SkillCategory 
-                    category="Databases & Tools" 
-                    skills={skills["Databases & Tools"]} 
-                    icon={<Database className="w-4 h-4" />}
-                  />
-                </div>
-              </motion.div>
-            </div>
+                ))}
+              </div>
+            </motion.div>
 
-            {/* Right Column */}
-            <div className="space-y-16">
-              {/* Education */}
-              <motion.div variants={sectionVariants}>
-                <SectionHeader 
-                  icon={<GraduationCap className="w-6 h-6" />}
-                  title="Education"
-                />
-                <div className="space-y-6">
-                  {education.map((item, index) => (
-                    <TimelineItem
-                      key={index}
-                      title={item.title}
-                      company={item.company}
-                      period={item.period}
-                      description={item.description}
-                      highlights={item.highlights}
-                      type="education"
-                      isLast={index === education.length - 1}
-                    />
-                  ))}
-                </div>
-              </motion.div>
+            {/* Research Experience - Order 4 on mobile, 3 on desktop */}
+            <motion.div variants={sectionVariants} className="lg:col-span-1 order-4 lg:order-3">
+              <SectionHeader 
+                icon={<Microscope className="w-6 h-6" />}
+                title="Research Experience"
+              />
+              <div className="space-y-6">
+                {research.map((item, index) => (
+                  <TimelineItem
+                    key={index}
+                    title={item.title}
+                    company={item.company}
+                    period={item.period}
+                    highlights={item.highlights}
+                    type="research"
+                    isLast={index === research.length - 1}
+                  />
+                ))}
+              </div>
+            </motion.div>
 
-              {/* Research Experience */}
-              <motion.div variants={sectionVariants}>
-                <SectionHeader 
-                  icon={<Microscope className="w-6 h-6" />}
-                  title="Research Experience"
-                />
-                <div className="space-y-6">
-                  {research.map((item, index) => (
-                    <TimelineItem
-                      key={index}
-                      title={item.title}
-                      company={item.company}
-                      period={item.period}
-                      highlights={item.highlights}
-                      type="research"
-                      isLast={index === research.length - 1}
-                    />
-                  ))}
-                </div>
-              </motion.div>
+            {/* Awards - Order 5 on mobile, 4 on desktop */}
+            <motion.div variants={sectionVariants} className="lg:col-span-1 order-5 lg:order-4">
+              <SectionHeader 
+                icon={<Award className="w-6 h-6" />}
+                title="Awards"
+              />
+              <div className="space-y-6">
+                {awards.map((item, index) => (
+                  <TimelineItem
+                    key={index}
+                    title={item.title}
+                    period={item.period}
+                    highlights={item.highlights}
+                    type="award"
+                    isLast={index === awards.length - 1}
+                  />
+                ))}
+              </div>
+            </motion.div>
 
-              {/* Awards */}
-              <motion.div variants={sectionVariants}>
-                <SectionHeader 
-                  icon={<Award className="w-6 h-6" />}
-                  title="Awards"
+            {/* Skills & Technologies - Order 6 on mobile (last), 3 on desktop (left column, second) */}
+            <motion.div variants={sectionVariants} className="lg:col-span-1 order-6 lg:order-3 lg:row-start-2 lg:col-start-1">
+              <SectionHeader 
+                icon={<Code className="w-6 h-6" />}
+                title="Skills & Technologies"
+              />
+              <div className="space-y-6">
+                <SkillCategory 
+                  category="Programming Languages" 
+                  skills={skills["Programming Languages"]} 
+                  icon={<Code className="w-4 h-4" />}
                 />
-                <div className="space-y-6">
-                  {awards.map((item, index) => (
-                    <TimelineItem
-                      key={index}
-                      title={item.title}
-                      period={item.period}
-                      highlights={item.highlights}
-                      type="award"
-                      isLast={index === awards.length - 1}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-            </div>
+                <SkillCategory 
+                  category="AI/ML Technologies" 
+                  skills={skills["AI/ML Technologies"]} 
+                  icon={<Brain className="w-4 h-4" />}
+                />
+                <SkillCategory 
+                  category="Cloud & Infrastructure" 
+                  skills={skills["Cloud & Infrastructure"]} 
+                  icon={<Cloud className="w-4 h-4" />}
+                />
+                <SkillCategory 
+                  category="Frameworks & Libraries" 
+                  skills={skills["Frameworks & Libraries"]} 
+                  icon={<Code className="w-4 h-4" />}
+                />
+                <SkillCategory 
+                  category="Databases & Tools" 
+                  skills={skills["Databases & Tools"]} 
+                  icon={<Database className="w-4 h-4" />}
+                />
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
