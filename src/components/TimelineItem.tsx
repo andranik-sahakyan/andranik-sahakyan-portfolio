@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calendar, MapPin, Briefcase, GraduationCap, Award, Microscope } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 
 interface TimelineItemProps {
   title: string;
@@ -25,18 +25,7 @@ const TimelineItem = ({
   isLast = false,
   type = 'experience'
 }: TimelineItemProps) => {
-  const getIcon = () => {
-    switch (type) {
-      case 'education':
-        return <GraduationCap className="w-5 h-5" />;
-      case 'research':
-        return <Microscope className="w-5 h-5" />;
-      case 'award':
-        return <Award className="w-5 h-5" />;
-      default:
-        return <Briefcase className="w-5 h-5" />;
-    }
-  };
+
 
   return (
     <motion.div 
@@ -58,7 +47,7 @@ const TimelineItem = ({
 
       <Card className="ml-12 bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/10 backdrop-blur-sm">
         <CardHeader className="pb-0">
-          <div className="flex items-start justify-between">
+          <div className="flex items-start">
             <div className="flex-1">
               <CardTitle className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors duration-300">
                 {title}
@@ -85,9 +74,7 @@ const TimelineItem = ({
               </div>
             </div>
             
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/20 transition-all duration-300">
-              {getIcon()}
-            </div>
+
           </div>
         </CardHeader>
         
