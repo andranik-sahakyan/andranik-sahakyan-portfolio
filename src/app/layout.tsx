@@ -5,12 +5,38 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Andranik Sahakyan",
-  description: "Personal portfolio site for Andranik Sahakyan.",
-  keywords: "AI, Data Science, Machine Learning, Resume, Data Engineer, Software Engineer, Andranik Sahakyan, Los Angeles",
+  metadataBase: new URL('https://www.andraniksahakyan.com'),
+  title: "Andranik Sahakyan - AI & Software Engineer",
+  description: "Experienced Software Engineer specializing in AI/ML, cloud computing, and full-stack development. Currently Software Engineer II at FloQast, previously at Abbott.",
+  keywords: "AI, AI Agents, LLM, Software Engineer, Machine Learning, Data Engineer, Andranik Sahakyan, Los Angeles, Python, JavaScript, React, Next.js, AWS SageMaker, Cloud Computing",
   robots: "index, follow",
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.andraniksahakyan.com',
+    title: 'Andranik Sahakyan - AI & Software Engineer',
+    description: 'Experienced Software Engineer specializing in AI/ML, cloud computing, and full-stack development.',
+    siteName: 'Andranik Sahakyan Portfolio',
+    images: [
+      {
+        url: '/assets/img/profile.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Andranik Sahakyan - AI & Software Engineer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Andranik Sahakyan - AI & Software Engineer',
+    description: 'Experienced Software Engineer specializing in AI/ML, cloud computing, and full-stack development.',
+    images: ['/assets/img/profile.jpeg'],
+  },
   verification: {
     google: "jtSMuHFQugBkkLPu9juPzy5nbZhKZ84CK2nrJOY7trU"
+  },
+  alternates: {
+    canonical: 'https://www.andraniksahakyan.com',
   },
   icons: {
     icon: [
@@ -34,6 +60,37 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Andranik Sahakyan",
+              "jobTitle": "Software Engineer II, AI",
+              "url": "https://www.andraniksahakyan.com",
+              "image": "https://www.andraniksahakyan.com/assets/img/profile.jpeg",
+              "sameAs": [
+                "https://www.linkedin.com/in/andraniksahakyan/",
+                "https://github.com/andranik-sahakyan"
+              ],
+              "worksFor": {
+                "@type": "Organization",
+                "name": "FloQast"
+              },
+              "alumniOf": [
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "Johns Hopkins University"
+                },
+                {
+                  "@type": "EducationalOrganization", 
+                  "name": "University of California, Irvine"
+                }
+              ]
+            })
+          }}
         />
       </head>
       <body className={inter.className}>
