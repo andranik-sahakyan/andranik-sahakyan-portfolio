@@ -8,7 +8,7 @@ import Image from 'next/image';
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Quantum Machine Learning Research Paper",
+      title: "Quantum ML Research",
       image: "/assets/img/quantum-computing.jpg",
       link: "/assets/pdf/IntroToQMLandQNN.pdf"
     },
@@ -94,30 +94,38 @@ const ProjectsSection = () => {
           >
             {projects.map((project, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-slate-700 border-slate-600">
-                  <div className="relative w-full aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-colors"
-                      >
-                        <ExternalLink className="w-6 h-6" />
-                      </a>
+                <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-slate-700 border-slate-600 py-0">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col h-full"
+                  >
+                    <div className="relative flex-shrink-0 aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      {/* Desktop hover overlay */}
+                      <div className="absolute inset-0 bg-black/50 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-colors">
+                          <ExternalLink className="w-6 h-6" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
-                      {project.title}
-                    </h4>
-                  </CardContent>
+                    <div className="flex-1 p-4 flex items-center justify-between">
+                      <h4 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                      </h4>
+                      {/* Mobile link icon */}
+                      <div className="md:hidden bg-blue-400/90 backdrop-blur-sm text-white p-2 rounded-full shadow-lg ml-2 flex-shrink-0">
+                        <ExternalLink className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </a>
                 </Card>
               </motion.div>
             ))}
