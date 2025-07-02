@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Home, User, FileText, Folder, Menu, X } from 'lucide-react';
 
 const Navigation = () => {
@@ -8,12 +8,12 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { href: '#hero', icon: Home, label: 'Home' },
     { href: '#about', icon: User, label: 'About' },
     { href: '#resume', icon: FileText, label: 'Resume' },
     { href: '#projects', icon: Folder, label: 'Projects' },
-  ];
+  ], []);
 
   useEffect(() => {
     // Clean up existing observer

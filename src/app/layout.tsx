@@ -1,8 +1,27 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Open_Sans, Raleway, Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap'
+});
+
+const openSans = Open_Sans({ 
+  subsets: ["latin"],
+  display: 'swap'
+});
+
+const raleway = Raleway({ 
+  subsets: ["latin"],
+  display: 'swap'
+});
+
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap'
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.andraniksahakyan.com'),
@@ -57,10 +76,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -93,7 +108,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${openSans.className} ${raleway.className} ${poppins.className}`}>
         {children}
       </body>
     </html>

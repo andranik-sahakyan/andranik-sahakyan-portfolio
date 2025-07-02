@@ -468,14 +468,15 @@ const GraphBackground = () => {
 
     // Cleanup
     return () => {
+      const currentMount = mountRef.current;
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
       clearInterval(intervalId);
       window.removeEventListener('resize', handleResize);
       
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentMount && renderer.domElement) {
+        currentMount.removeChild(renderer.domElement);
       }
       
       // Dispose of Three.js objects
