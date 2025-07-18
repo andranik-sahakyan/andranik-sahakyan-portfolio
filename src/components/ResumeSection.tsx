@@ -1,10 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import TimelineItem from './TimelineItem';
 import { GraduationCap, Briefcase, Microscope, Award, Code, Database, Cloud, Brain } from 'lucide-react';
 
 const ResumeSection = () => {
+  const [hasHover, setHasHover] = useState(false);
+
+  useEffect(() => {
+    // Check if device supports hover interactions
+    const mediaQuery = window.matchMedia('(hover: hover)');
+    setHasHover(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setHasHover(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   const education = [
     {
       title: "M.S. Computer Science",
@@ -41,7 +57,8 @@ const ResumeSection = () => {
       location: "Sylmar, CA",
       period: "April 2023 - December 2024",
       highlights: [
-        "Implemented a POC for various generative AI use cases using open source LLMs (question answering over internal documents with RAG, Text-to-SQL for querying databases in natural language, summarizing patient app logs, etc.)",
+        "Developed of an AI-driven patient summary feature integrating real-time device data, app logs, and operational history, resulting in reduced complaint investigation times and streamlining workflows for call center agents/product support engineers. Utilized RAG and prompt engineering with leading foundation models.",
+        "Led various POCs for generative AI use cases (Text-to-SQL, Q&A, Log Summarization), significantly enhancing data accessibility and insights.",
         "Designed and implemented a data lakehouse architecture POC using Databricks for large-scale, complex CRM device diagnostic data resulting in significant improvements to query performance, data storage, and access to low-level raw device data.",
         "Designed and implemented tools/libraries for efficiently streaming, parsing, and redacting data from implantable cardiac device transmissions."
       ]
@@ -141,7 +158,7 @@ const ResumeSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.1 // Reduced from 0.3 to 0.1 for smoother mobile experience
       }
     }
   };
@@ -158,12 +175,12 @@ const ResumeSection = () => {
   };
 
   const skillItemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.95 }, // More subtle scale change (0.95 instead of 0.8)
     visible: { 
       opacity: 1, 
       scale: 1,
       transition: {
-        duration: 0.3
+        duration: 0.4 // Slightly longer duration for smoother animation
       }
     }
   };
@@ -205,9 +222,18 @@ const ResumeSection = () => {
           <motion.span
             key={index}
             variants={skillItemVariants}
-            className="px-3 py-1.5 bg-slate-800/50 border border-slate-700/50 rounded-lg text-sm text-gray-300 hover:bg-slate-700/50 hover:border-blue-500/30 hover:text-white transition-all duration-300 cursor-default"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="px-3 py-1.5 bg-slate-800/50 border border-slate-700/50 rounded-lg text-sm text-gray-300 hover:bg-slate-700/50 hover:border-blue-500/30 hover:text-white transition-all duration-300 cursor-default will-change-transform"
+            whileHover={{ 
+              scale: hasHover ? 1.03 : 1 // Only scale on devices with true hover capability
+            }}
+            whileTap={{ 
+              scale: 0.98 // More subtle tap effect for mobile
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25
+            }}
           >
             {skill}
           </motion.span>
