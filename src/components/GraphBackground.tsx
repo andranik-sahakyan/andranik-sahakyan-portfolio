@@ -38,7 +38,8 @@ const GraphBackground = () => {
   const animationIdRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const currentMount = mountRef.current;
+    if (!currentMount) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -55,7 +56,7 @@ const GraphBackground = () => {
     
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
+    currentMount.appendChild(renderer.domElement);
 
     sceneRef.current = scene;
     rendererRef.current = renderer;
@@ -468,7 +469,6 @@ const GraphBackground = () => {
 
     // Cleanup
     return () => {
-      const currentMount = mountRef.current;
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
