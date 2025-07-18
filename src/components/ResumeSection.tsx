@@ -7,18 +7,31 @@ import { GraduationCap, Briefcase, Microscope, Award, Code, Database, Cloud, Bra
 
 const ResumeSection = () => {
   const [hasHover, setHasHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if device supports hover interactions
-    const mediaQuery = window.matchMedia('(hover: hover)');
-    setHasHover(mediaQuery.matches);
+    // Check if device supports hover interactions and detect mobile
+    const hoverQuery = window.matchMedia('(hover: hover)');
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    
+    setHasHover(hoverQuery.matches);
+    setIsMobile(mobileQuery.matches);
 
-    const handleChange = (e: MediaQueryListEvent) => {
+    const handleHoverChange = (e: MediaQueryListEvent) => {
       setHasHover(e.matches);
     };
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    const handleMobileChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+
+    hoverQuery.addEventListener('change', handleHoverChange);
+    mobileQuery.addEventListener('change', handleMobileChange);
+    
+    return () => {
+      hoverQuery.removeEventListener('change', handleHoverChange);
+      mobileQuery.removeEventListener('change', handleMobileChange);
+    };
   }, []);
 
   const education = [
@@ -153,12 +166,13 @@ const ResumeSection = () => {
     ]
   };
 
+  // Simplified animations - different for mobile vs desktop
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1 // Reduced from 0.3 to 0.1 for smoother mobile experience
+        staggerChildren: isMobile ? 0.02 : 0.05 // Much faster/no stagger on mobile
       }
     }
   };
@@ -175,12 +189,11 @@ const ResumeSection = () => {
   };
 
   const skillItemVariants = {
-    hidden: { opacity: 0, scale: 0.95 }, // More subtle scale change (0.95 instead of 0.8)
+    hidden: { opacity: 0 },
     visible: { 
-      opacity: 1, 
-      scale: 1,
+      opacity: 1,
       transition: {
-        duration: 0.4 // Slightly longer duration for smoother animation
+        duration: isMobile ? 0.2 : 0.3 // Faster, simpler fade on mobile
       }
     }
   };
@@ -213,27 +226,26 @@ const ResumeSection = () => {
       </div>
       <motion.div 
         className="flex flex-wrap gap-2 px-2 sm:px-1"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
+        variants={isMobile ? undefined : containerVariants} // Disable stagger animations on mobile
+        initial={isMobile ? undefined : "hidden"}
+        whileInView={isMobile ? undefined : "visible"}
         viewport={{ once: true }}
       >
         {categorySkills.map((skill, index) => (
           <motion.span
             key={index}
-            variants={skillItemVariants}
-            className="px-3 py-1.5 bg-slate-800/50 border border-slate-700/50 rounded-lg text-sm text-gray-300 hover:bg-slate-700/50 hover:border-blue-500/30 hover:text-white transition-all duration-300 cursor-default will-change-transform"
-            whileHover={{ 
-              scale: hasHover ? 1.03 : 1 // Only scale on devices with true hover capability
-            }}
-            whileTap={{ 
-              scale: 0.98 // More subtle tap effect for mobile
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 25
-            }}
+            variants={isMobile ? undefined : skillItemVariants} // No variants on mobile
+            className="px-3 py-1.5 bg-slate-800/50 border border-slate-700/50 rounded-lg text-sm text-gray-300 hover:bg-slate-700/50 hover:border-blue-500/30 hover:text-white transition-all duration-300 cursor-default"
+            whileHover={
+              hasHover && !isMobile
+                ? { scale: 1.02, transition: { duration: 0.2 } } // Subtle effect only on desktop
+                : {}
+            }
+            whileTap={
+              !isMobile
+                ? { scale: 0.98, transition: { duration: 0.1 } }
+                : {} // No tap effects on mobile to prevent flickering
+            }
           >
             {skill}
           </motion.span>
