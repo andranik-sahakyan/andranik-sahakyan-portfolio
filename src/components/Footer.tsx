@@ -1,6 +1,6 @@
 'use client';
 
-import { Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -22,14 +22,6 @@ const Footer = () => {
             className="hover:scale-110 transition-transform"
           >
             <Github className="w-6 h-6" />
-          </a>
-          <a 
-            href="mailto:asahakyan81@gmail.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
-          >
-            <Mail className="w-6 h-6" />
           </a>
         </div>
       </div>
