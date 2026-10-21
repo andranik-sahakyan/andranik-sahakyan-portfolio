@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
-import { Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 import GraphBackground from './GraphBackground';
 
@@ -83,14 +83,6 @@ const HeroSection = () => {
               <Github className="w-8 h-8 text-gray-300 hover:text-blue-400 transition-colors duration-300" />
             </a>
             
-            <a 
-              href="mailto:asahakyan81@gmail.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-transform"
-            >
-              <Mail className="w-8 h-8 text-gray-300 hover:text-blue-400 transition-colors duration-300" />
-            </a>
           </div>
         </motion.div>
       </div>
